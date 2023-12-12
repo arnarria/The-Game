@@ -13,6 +13,7 @@ class Menu extends Phaser.Scene {
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         this.keyT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+        this.keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
         
         // create title screen image
         this.add.sprite(game.config.width / 2, game.config.height / 2, 'title');
@@ -40,6 +41,11 @@ class Menu extends Phaser.Scene {
         {
             this.titleSong.stop();
             this.scene.start('tutorialScene');
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(this.keyC)) {
+            this.titleSong.stop();
+            this.scene.start('creditScene');
         }
     }
 }
