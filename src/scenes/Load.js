@@ -25,7 +25,9 @@ class Load extends Phaser.Scene {
 
         // image asset loading; Note: Title is unfinished and Tutorial is temp, will complete and add later
         this.load.image('title', 'TitleScreen.png')
-        this.load.image('tempTutorial', 'TempTutorial.png')
+        // this.load.image('tempTutorial', 'TempTutorial.png')
+        this.load.image('tutorial', 'Tutorial.png')
+        this.load.image('Bellingol', 'BellinGol.png')
         this.load.image('field', 'SoccerField.png')
         this.load.image('goal', 'Goal.png')
         this.load.image('post', 'Post.png')

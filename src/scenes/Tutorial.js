@@ -9,7 +9,8 @@ class Tutorial extends Phaser.Scene {
         // this.keyT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
         
         // create title screen image
-        this.add.sprite(game.config.width / 2, game.config.height / 2, 'tempTutorial');
+        // this.add.sprite(game.config.width / 2, game.config.height / 2, 'tempTutorial');
+        this.add.sprite(game.config.width / 2, game.config.height / 2, 'tutorial');
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
