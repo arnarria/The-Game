@@ -217,7 +217,7 @@ class Play extends Phaser.Scene {
         
         // variables
         this.score = 0
-        game.settings = {gameTimer: 10000}
+        game.settings = {gameTimer: 90000}
 
         this.SHOT_VELOCITY_X = 200
         this.SHOT_VELOCITY_Y_MIN = 700
@@ -257,7 +257,7 @@ class Play extends Phaser.Scene {
             this.scoredGoal.play()
             this.score++
             if(this.score != 0) this.goalScored = parseInt(this.score)
-            this.goals = "Shots: " + this.score
+            this.goals = "Score: " + this.score
             this.scoreText.text = this.goals
             // ball.destroy()
         })
@@ -319,7 +319,7 @@ class Play extends Phaser.Scene {
             this.finalWhistle.play();
             this.stadium.stop();
             this.ballKick.stop();
-            this.scoredGoal.stop();
+            // this.scoredGoal.stop();
             this.winCelebration.play();
             this.scene.stop('playScene');
             this.scene.start('creditScene');
