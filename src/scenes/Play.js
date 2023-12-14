@@ -153,10 +153,7 @@ class Play extends Phaser.Scene {
             this.bSchweinsteiger, this.jKimmich, this.lMatthaus, 
             this.jMusiala, this.gMuller, this.kRummenigge])
         
-        // attempt at creating player's team with body physics that allow for "passes" forward in attack but not back; only defenders and keeper implemented for now
-        // (current issue is sometimes players overlap with random spawn; could be fixed by hardcoding their locations but not ideal)
-        // (however, since players irl will sometimes [or often depending on team/strategy/player(s)/etc] overlap, I think this
-        // is somewhat fine, but in general, if I can set their spacing and location to be better, that would be ideal)
+        // Player's Team (Allow passes forward but not back)
 
         this.iCasillas = this.physics.add.sprite(320, height / 2 * 1.88, 'madrid')
         this.iCasillas.body.setCollideWorldBounds(true)
@@ -302,7 +299,7 @@ class Play extends Phaser.Scene {
         this.gameOver = false;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.gameOver = true
-            console.log("gameOver")
+            // console.log("gameOver")
         }, null, this)
 
         this.timer = game.settings.gameTimer
@@ -313,5 +310,14 @@ class Play extends Phaser.Scene {
         this.timer = game.settings.gameTimer - this.clock.elapsed
         this.timerText.text = this.timer/1000 - (this.timer/1000) % 1 + 1
         // console.log(this.timer)
+
+        if(this.gameOver) {
+            this.stadium.stop();
+            this.ballKick.stop();
+            this.scoredGoal.stop();
+            this.scene.stop('playScene');
+            // this.scene.start("menuScene");
+            // console.log("It's Jover")
+        }
     }
 }
