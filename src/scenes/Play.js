@@ -69,7 +69,7 @@ class Play extends Phaser.Scene {
         this.ball.body.setBounce(0.5)
         this.ball.body.setDamping(true).setDrag(0.5)
 
-        // attempt at creating opposing team (just the keeper for now)
+        // Opposing team (Note: I'm purposefully allowing defenders to overlap each other for balance purposes)
         this.oKahn = this.physics.add.sprite(320, height / 10, 'bayern')
         this.oKahn.body.setCircle(this.oKahn.width / 2)
         this.oKahn.setVelocityX(600)
