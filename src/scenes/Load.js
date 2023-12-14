@@ -36,12 +36,16 @@ class Load extends Phaser.Scene {
         this.load.image('bayern', 'Bayern.png')
         this.load.image('madrid', 'Madrid.png')
 
-        // audio loading; Note: volume in scenes need tweaking, will do later; also, a couple are probably temp depending on time
-        this.load.audio('titleMusic', 'TitleMusic.mp3')
+        // audio loading; Note: volume in scenes need tweaking, will do later; also, a few are probably temp depending on time
+        this.load.audio('titleMusic', 'HalaMadrid.mp3')
+        this.load.audio('tutorialMusic', 'TutorialMusic.mp3')
+        this.load.audio('bellingolCredits', 'BELLINGOLcredits.wav')
         this.load.audio('kickoffWhistle', 'KickoffWhistle.wav')
         this.load.audio('ambiance', 'StadiumAmbiance.wav')
         this.load.audio('kick', 'BallKick.wav')
         this.load.audio('scored', 'Goal.wav')
+        this.load.audio('finalwhistle', 'FinalWhistle.wav')
+        this.load.audio('winCheer', 'VictoryCheer.wav')
     }
 
     create()

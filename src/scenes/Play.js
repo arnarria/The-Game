@@ -23,6 +23,10 @@ class Play extends Phaser.Scene {
 
         this.scoredGoal = this.sound.add('scored')
 
+        this.finalWhistle = this.sound.add('finalwhistle')
+
+        this.winCelebration = this.sound.add('winCheer')
+
         // add soccer field background
         this.field = this.add.image(0, 0, 'field').setOrigin(0)
 
@@ -312,12 +316,13 @@ class Play extends Phaser.Scene {
         // console.log(this.timer)
 
         if(this.gameOver) {
+            this.finalWhistle.play();
             this.stadium.stop();
             this.ballKick.stop();
             this.scoredGoal.stop();
+            this.winCelebration.play();
             this.scene.stop('playScene');
-            // this.scene.start("menuScene");
-            // console.log("It's Jover")
+            this.scene.start('creditScene');
         }
     }
 }

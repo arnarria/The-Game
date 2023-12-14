@@ -14,12 +14,10 @@ class Tutorial extends Phaser.Scene {
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
-        // this.scene.start('title')
-
-        // add title screen music
-        // this.titleSong = this.sound.add('titleMusic')
-        // this.titleSong.loop = true;
-        // this.titleSong.play();
+        // add tutorial screen music
+        this.tutorialSong = this.sound.add('tutorialMusic')
+        this.tutorialSong.loop = true;
+        this.tutorialSong.play();
 
         // add kickoff whistle
         this.kickoff = this.sound.add('kickoffWhistle')
@@ -28,7 +26,7 @@ class Tutorial extends Phaser.Scene {
     update() {
         if(Phaser.Input.Keyboard.JustDown(this.keyE)) 
         {
-            // this.titleSong.stop();
+            this.tutorialSong.stop();
             this.kickoff.play();
             this.scene.start('playScene');
         }

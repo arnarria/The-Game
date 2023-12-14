@@ -27,6 +27,9 @@ class Menu extends Phaser.Scene {
 
         // add kickoff whistle
         this.kickoff = this.sound.add('kickoffWhistle')
+
+        // add sound effect for entering credits directly from the menu
+        this.creditSFX = this.sound.add('bellingolCredits')
     }
 
     update() {
@@ -45,6 +48,7 @@ class Menu extends Phaser.Scene {
 
         if(Phaser.Input.Keyboard.JustDown(this.keyC)) {
             this.titleSong.stop();
+            this.creditSFX.play();
             this.scene.start('creditScene');
         }
     }
