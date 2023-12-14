@@ -23,7 +23,7 @@ class Load extends Phaser.Scene {
         // this.load.path = './assets/img/'
         // this.load.path = './assets/sounds/'
 
-        // image asset loading; Note: Title is unfinished and Tutorial is temp, will complete and add later
+        // image asset loading
         this.load.image('title', 'TitleScreen.png')
         // this.load.image('tempTutorial', 'TempTutorial.png')
         this.load.image('tutorial', 'Tutorial.png')
@@ -35,8 +35,9 @@ class Load extends Phaser.Scene {
         this.load.image('ball', 'SoccerBall.png')
         this.load.image('bayern', 'Bayern.png')
         this.load.image('madrid', 'Madrid.png')
+        this.load.image('lost', 'BellinFail.png')
 
-        // audio loading; Note: volume in scenes need tweaking, will do later; also, a few are probably temp depending on time
+        // audio loading
         this.load.audio('titleMusic', 'HalaMadrid.mp3')
         this.load.audio('tutorialMusic', 'TutorialMusic.mp3')
         this.load.audio('bellingolCredits', 'BELLINGOLcredits.wav')
@@ -44,8 +45,11 @@ class Load extends Phaser.Scene {
         this.load.audio('ambiance', 'StadiumAmbiance.wav')
         this.load.audio('kick', 'BallKick.wav')
         this.load.audio('scored', 'Goal.wav')
+        this.load.audio('bellingol', 'BELLINGOL.wav')
+        this.load.audio('siu', 'Siuuu.wav')
         this.load.audio('finalwhistle', 'FinalWhistle.wav')
         this.load.audio('winCheer', 'VictoryCheer.wav')
+        this.load.audio('boo', 'Boo.wav')
     }
 
     create()

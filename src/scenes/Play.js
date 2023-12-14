@@ -15,17 +15,19 @@ class Play extends Phaser.Scene {
 
     create() {
 
-        this.stadium = this.sound.add('ambiance')
+        this.stadium = this.sound.add('ambiance', { volume: 0.75 })
         this.stadium.loop = true;
         this.stadium.play();
 
-        this.ballKick = this.sound.add('kick')
+        this.ballKick = this.sound.add('kick', { volume: 0.5 })
 
         this.scoredGoal = this.sound.add('scored')
 
-        this.finalWhistle = this.sound.add('finalwhistle')
+        this.finalWhistle = this.sound.add('finalwhistle', { volume: 0.75 })
 
-        this.winCelebration = this.sound.add('winCheer')
+        this.winCelebration = this.sound.add('winCheer', { volume: 0.75 })
+
+        this.booing = this.sound.add('boo')
 
         // add soccer field background
         this.field = this.add.image(0, 0, 'field').setOrigin(0)
@@ -76,7 +78,7 @@ class Play extends Phaser.Scene {
         // Opposing team (Note: I'm purposefully allowing defenders to overlap each other for balance purposes)
         this.oKahn = this.physics.add.sprite(320, height / 10, 'bayern')
         this.oKahn.body.setCircle(this.oKahn.width / 2)
-        this.oKahn.setVelocityX(600)
+        this.oKahn.setVelocityX(500)
         this.oKahn.body.setCollideWorldBounds(true)
         this.oKahn.body.setBounce(1)
         this.oKahn.body.setImmovable(true)
@@ -254,7 +256,8 @@ class Play extends Phaser.Scene {
             ball.setY(height - height / 11)
             this.ball.setVelocityX(0)
             this.ball.setVelocityY(0)
-            this.scoredGoal.play()
+            // this.scoredGoal.play()
+            this.playShout();
             this.score++
             if(this.score != 0) this.goalScored = parseInt(this.score)
             this.goals = "Score: " + this.score
@@ -263,11 +266,11 @@ class Play extends Phaser.Scene {
         })
 
         this.physics.add.collider(this.oKahn, this.rightBox, (oKahn, rightBox) => {
-            oKahn.setVelocityX(-400)
+            oKahn.setVelocityX(-500)
         })
 
         this.physics.add.collider(this.oKahn, this.leftBox, (oKahn, leftBox) => {
-            oKahn.setVelocityX(400)
+            oKahn.setVelocityX(500)
         })
 
         // keeper collision
@@ -315,7 +318,7 @@ class Play extends Phaser.Scene {
         this.timerText.text = this.timer/1000 - (this.timer/1000) % 1 + 1
         // console.log(this.timer)
 
-        if(this.gameOver) {
+        if(this.gameOver && this.score != 0) {
             this.finalWhistle.play();
             this.stadium.stop();
             this.ballKick.stop();
@@ -323,6 +326,27 @@ class Play extends Phaser.Scene {
             this.winCelebration.play();
             this.scene.stop('playScene');
             this.scene.start('creditScene');
+        } else if(this.gameOver && this.score == 0) {
+            this.finalWhistle.play();
+            this.stadium.stop();
+            this.ballKick.stop();
+            this.booing.play();
+            this.scene.stop('playScene');
+            this.scene.start('loseScene');
+        }
+    }
+
+    playShout() {
+        switch(Math.floor(Math.random() * 3)) {
+            case 0:
+                this.sound.play('scored');
+                break;
+            case 1:
+                this.sound.play('bellingol');
+                break;
+            case 2:
+                this.sound.play('siu');
+                break;
         }
     }
 }

@@ -15,7 +15,7 @@ class Tutorial extends Phaser.Scene {
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         // add tutorial screen music
-        this.tutorialSong = this.sound.add('tutorialMusic')
+        this.tutorialSong = this.sound.add('tutorialMusic', { volume: 0.35 })
         this.tutorialSong.loop = true;
         this.tutorialSong.play();
 

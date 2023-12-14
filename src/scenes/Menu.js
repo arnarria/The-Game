@@ -21,7 +21,7 @@ class Menu extends Phaser.Scene {
         // this.scene.start('title')
 
         // add title screen music
-        this.titleSong = this.sound.add('titleMusic')
+        this.titleSong = this.sound.add('titleMusic', { volume: 0.75 })
         this.titleSong.loop = true;
         this.titleSong.play();
 
@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
         this.kickoff = this.sound.add('kickoffWhistle')
 
         // add sound effect for entering credits directly from the menu
-        this.creditSFX = this.sound.add('bellingolCredits')
+        this.creditSFX = this.sound.add('bellingolCredits', { volume: 0.75 })
     }
 
     update() {

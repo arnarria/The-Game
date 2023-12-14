@@ -1,3 +1,6 @@
+/*
+For the five major Phaser components, I have a physics system, text objects, and a timer.
+*/
 'use strict'
 
 let config = {
@@ -10,7 +13,7 @@ let config = {
             debug: true
         }
     },
-    scene: [ Load, Menu, Credits, Tutorial, Play ]
+    scene: [ Load, Menu, Credits, Tutorial, Play, Lose ]
 }
 
 let game = new Phaser.Game(config)
