@@ -70,12 +70,88 @@ class Play extends Phaser.Scene {
         this.ball.body.setDamping(true).setDrag(0.5)
 
         // attempt at creating opposing team (just the keeper for now)
-        this.mNeuer = this.physics.add.sprite(320, height / 10, 'bayern')
-        this.mNeuer.body.setCircle(this.mNeuer.width / 2)
-        this.mNeuer.setVelocityX(400)
-        this.mNeuer.body.setCollideWorldBounds(true)
-        this.mNeuer.body.setBounce(1)
-        this.mNeuer.body.setImmovable(true)
+        this.oKahn = this.physics.add.sprite(320, height / 10, 'bayern')
+        this.oKahn.body.setCircle(this.oKahn.width / 2)
+        this.oKahn.setVelocityX(600)
+        this.oKahn.body.setCollideWorldBounds(true)
+        this.oKahn.body.setBounce(1)
+        this.oKahn.body.setImmovable(true)
+
+        this.pLahm = this.physics.add.sprite(50, height / 5, 'bayern')
+        this.pLahm.body.setCircle(this.pLahm.width / 2)
+        this.pLahm.setVelocityX(400)
+        this.pLahm.body.setCollideWorldBounds(true)
+        this.pLahm.body.setBounce(1)
+        this.pLahm.body.setImmovable(true)
+
+        this.deLigt = this.physics.add.sprite(200, height / 5, 'bayern')
+        this.deLigt.body.setCircle(this.deLigt.width / 2)
+        this.deLigt.setVelocityX(-500)
+        this.deLigt.body.setCollideWorldBounds(true)
+        this.deLigt.body.setBounce(1)
+        this.deLigt.body.setImmovable(true)
+
+        this.fBeckenbauer = this.physics.add.sprite(420, height / 5, 'bayern')
+        this.fBeckenbauer.body.setCircle(this.fBeckenbauer.width / 2)
+        this.fBeckenbauer.setVelocityX(400)
+        this.fBeckenbauer.body.setCollideWorldBounds(true)
+        this.fBeckenbauer.body.setBounce(1)
+        this.fBeckenbauer.setImmovable(true)
+
+        this.aDavies = this.physics.add.sprite(550, height / 5, 'bayern')
+        this.aDavies.body.setCircle(this.aDavies.width / 2)
+        this.aDavies.setVelocityX(-800)
+        this.aDavies.body.setCollideWorldBounds(true)
+        this.aDavies.body.setBounce(1)
+        this.aDavies.body.setImmovable(true)
+
+        this.bSchweinsteiger = this.physics.add.sprite(200, height / 2.3, 'bayern')
+        this.bSchweinsteiger.body.setCircle(this.bSchweinsteiger.width / 2)
+        // this.bSchweinsteiger.setVelocityX(-500)
+        // this.bSchweinsteiger.body.setCollideWorldBounds(true)
+        // this.bSchweinsteiger.body.setBounce(1)
+        this.bSchweinsteiger.body.setImmovable(true)
+
+        this.jKimmich = this.physics.add.sprite(320, height / 2.7, 'bayern')
+        this.jKimmich.body.setCircle(this.jKimmich.width / 2)
+        // this.jKimmich.setVelocityX(-500)
+        // this.jKimmich.body.setCollideWorldBounds(true)
+        // this.jKimmich.body.setBounce(1)
+        this.jKimmich.body.setImmovable(true)
+
+        this.lMatthaus = this.physics.add.sprite(420, height / 2.3, 'bayern')
+        this.lMatthaus.body.setCircle(this.lMatthaus.width / 2)
+        // this.lMatthaus.setVelocityX(-500)
+        // this.lMatthaus.body.setCollideWorldBounds(true)
+        // this.lMatthaus.body.setBounce(1)
+        this.lMatthaus.body.setImmovable(true)
+
+        this.jMusiala = this.physics.add.sprite(35, height / 1.9, 'bayern')
+        this.jMusiala.body.setCircle(this.jMusiala.width / 2)
+        // this.jMusiala.setVelocityX(-500)
+        // this.jMusiala.body.setCollideWorldBounds(true)
+        // this.jMusiala.body.setBounce(1)
+        this.jMusiala.body.setImmovable(true)
+
+        this.gMuller = this.physics.add.sprite(322, height / 1.5, 'bayern')
+        this.gMuller.body.setCircle(this.gMuller.width / 2)
+        // this.gMuller.setVelocityX(-500)
+        // this.gMuller.body.setCollideWorldBounds(true)
+        // this.gMuller.body.setBounce(1)
+        this.gMuller.body.setImmovable(true)
+
+        this.kRummenigge = this.physics.add.sprite(600, height / 1.9, 'bayern')
+        this.kRummenigge.body.setCircle(this.kRummenigge.width / 2)
+        // this.kRummenigge.setVelocityX(-500)
+        // this.kRummenigge.body.setCollideWorldBounds(true)
+        // this.kRummenigge.body.setBounce(1)
+        this.kRummenigge.body.setImmovable(true)
+
+        // Bayern Munich All-time 11 group
+        this.bayernMunich = this.add.group([this.oKahn, 
+            this.pLahm, this.deLigt, this.fBeckenbauer, this.aDavies, 
+            this.bSchweinsteiger, this.jKimmich, this.lMatthaus, 
+            this.jMusiala, this.gMuller, this.kRummenigge])
         
         // attempt at creating player's team with body physics that allow for "passes" forward in attack but not back; only defenders and keeper implemented for now
         // (current issue is sometimes players overlap with random spawn; could be fixed by hardcoding their locations but not ideal)
@@ -87,25 +163,55 @@ class Play extends Phaser.Scene {
         this.iCasillas.body.setCircle(this.iCasillas.width / 2)
         this.iCasillas.body.setImmovable(true)
         
-        this.rCarlos = this.physics.add.sprite(0, height / 4 * 3, 'madrid')
-        this.rCarlos.setX(Phaser.Math.Between(0 + this.rCarlos.width / 2, width - this.rCarlos.width / 2))
+        this.rCarlos = this.physics.add.sprite(50, height / 1.65, 'madrid')
+        // this.rCarlos.setX(Phaser.Math.Between(0 + this.rCarlos.width / 2, width - this.rCarlos.width / 2))
         this.rCarlos.body.setImmovable(true)
         this.rCarlos.body.checkCollision.down = false
 
-        this.rMarquez = this.physics.add.sprite(0, height / 4 * 3, 'madrid')
-        this.rMarquez.setX(Phaser.Math.Between(0 + this.rMarquez.width / 2, width - this.rMarquez.width / 2))
+        this.rMarquez = this.physics.add.sprite(200, height / 1.65, 'madrid')
+        // this.rMarquez.setX(Phaser.Math.Between(0 + this.rMarquez.width / 2, width - this.rMarquez.width / 2))
         this.rMarquez.body.setImmovable(true)
         this.rMarquez.body.checkCollision.down = false
         
-        this.sRamos = this.physics.add.sprite(0, height / 4 * 3, 'madrid')
-        this.sRamos.setX(Phaser.Math.Between(0 + this.sRamos.width / 2, width - this.sRamos.width / 2))
+        this.sRamos = this.physics.add.sprite(420, height / 1.65, 'madrid')
+        // this.sRamos.setX(Phaser.Math.Between(0 + this.sRamos.width / 2, width - this.sRamos.width / 2))
         this.sRamos.body.setImmovable(true)
         this.sRamos.body.checkCollision.down = false
 
-        this.mSalgado = this.physics.add.sprite(0, height / 4 * 3, 'madrid')
-        this.mSalgado.setX(Phaser.Math.Between(0 + this.mSalgado.width / 2, width - this.mSalgado.width / 2))
+        this.mSalgado = this.physics.add.sprite(550, height / 1.65, 'madrid')
+        // this.mSalgado.setX(Phaser.Math.Between(0 + this.mSalgado.width / 2, width - this.mSalgado.width / 2))
         this.mSalgado.body.setImmovable(true)
         this.mSalgado.body.checkCollision.down = false
+
+        this.modric = this.physics.add.sprite(100, height / 2.2, 'madrid')
+        this.modric.body.setImmovable(true)
+        this.modric.body.checkCollision.down = false
+
+        this.bellingol = this.physics.add.sprite(322, height / 2.2, 'madrid')
+        this.bellingol.body.setImmovable(true)
+        this.bellingol.body.checkCollision.down = false
+
+        this.ozil = this.physics.add.sprite(500, height / 2.2, 'madrid')
+        this.ozil.body.setImmovable(true)
+        this.ozil.body.checkCollision.down = false
+
+        this.cRonaldo = this.physics.add.sprite(100, height / 3, 'madrid')
+        this.cRonaldo.body.setImmovable(true)
+        this.cRonaldo.body.checkCollision.down = false
+
+        this.fPuskas = this.physics.add.sprite(322, height / 3.5, 'madrid')
+        this.fPuskas.body.setImmovable(true)
+        this.fPuskas.body.checkCollision.down = false
+
+        this.lFigo = this.physics.add.sprite(500, height / 3, 'madrid')
+        this.lFigo.body.setImmovable(true)
+        this.lFigo.body.checkCollision.down = false
+
+        // Real Madrid All-time 11 group
+        this.realMadrid = this.add.group([this.iCasillas, 
+            this.rCarlos, this.rMarquez, this.sRamos, this.mSalgado, 
+            this.modric, this.bellingol, this.ozil, 
+            this.cRonaldo, this. fPuskas, this.lFigo])
 
         
         // variables
@@ -155,31 +261,32 @@ class Play extends Phaser.Scene {
             // ball.destroy()
         })
 
-        this.physics.add.collider(this.mNeuer, this.rightBox, (mNeuer, rightBox) => {
-            mNeuer.setVelocityX(-400)
+        this.physics.add.collider(this.oKahn, this.rightBox, (oKahn, rightBox) => {
+            oKahn.setVelocityX(-400)
         })
 
-        this.physics.add.collider(this.mNeuer, this.leftBox, (mNeuer, leftBox) => {
-            mNeuer.setVelocityX(400)
+        this.physics.add.collider(this.oKahn, this.leftBox, (oKahn, leftBox) => {
+            oKahn.setVelocityX(400)
         })
 
         // keeper collision
-        this.physics.add.collider(this.ball, this.mNeuer)
+        this.physics.add.collider(this.ball, this.bayernMunich)
 
         // player's team collision
-        this.physics.add.collider(this.ball, this.iCasillas)
+        /* this.physics.add.collider(this.ball, this.iCasillas)
         this.physics.add.collider(this.ball, this.rCarlos)
         this.physics.add.collider(this.ball, this.rMarquez)
         this.physics.add.collider(this.ball, this.sRamos)
-        this.physics.add.collider(this.ball, this.mSalgado)
+        this.physics.add.collider(this.ball, this.mSalgado) */
+        this.physics.add.collider(this.ball, this.realMadrid)
 
         // goal posts collision to add a bit of extra challenge and logic to the game by forcing the player to score from more of a frontal position
         this.physics.add.collider(this.ball, this.posts)
 
-        // keeper's box collision (for the keeper only); Issue: there is no collision or console outputs callback error; may have to give up; Update: LESSSS GOOOOO; I'M TOO BIG BRAIN
-        // this.physics.add.collider(this.mNeuer, this.kB)
-        // this.physics.add.collider(this.mNeuer, this.kB, this, null)
-        
+        // keeper's box collision (for the keeper only); Issue: there is no collision or console outputs callback error; may have to give up / Update: LESSSS GOOOOO; I'M TOO BIG BRAIN
+        // this.physics.add.collider(this.oKahn, this.kB)
+        // this.physics.add.collider(this.oKahn, this.kB, this, null)
+
         // time text
         let timeConfig = {
             fontFamily: 'Courier',
