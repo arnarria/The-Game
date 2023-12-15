@@ -4,12 +4,8 @@ class Tutorial extends Phaser.Scene {
     }
 
     create() {
-
-        // this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        // this.keyT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
         
         // create title screen image
-        // this.add.sprite(game.config.width / 2, game.config.height / 2, 'tempTutorial');
         this.add.sprite(game.config.width / 2, game.config.height / 2, 'tutorial');
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
@@ -30,11 +26,5 @@ class Tutorial extends Phaser.Scene {
             this.kickoff.play();
             this.scene.start('playScene');
         }
-
-        /* if(Phaser.Input.Keyboard.JustDown(this.keyT)) 
-        {
-            this.titleSong.stop();
-            this.scene.start('playScene');
-        } */
     }
 }

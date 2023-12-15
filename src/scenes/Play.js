@@ -3,16 +3,6 @@ class Play extends Phaser.Scene {
         super('playScene')
     }
 
-    /* preload() {
-        this.load.path = './assets/img/'
-        this.load.image('field', 'SoccerField.png')
-        this.load.image('goal', 'Goal.png')
-        this.load.image('post', 'Post.png')
-        this.load.image('ball', 'SoccerBall.png')
-        this.load.image('bayern', 'Bayern.png')
-        this.load.image('madrid', 'Madrid.png')
-    } */
-
     create() {
 
         this.stadium = this.sound.add('ambiance', { volume: 0.75 })
@@ -38,7 +28,7 @@ class Play extends Phaser.Scene {
         this.goal.body.setImmovable(true)
         this.goal.setAlpha(0)
 
-        // add opposing team's keeper box hitbox ---> Issue: no collision detected; will come back to this later to try to get it to work
+        // add opposing team's keeper box hitbox
         this.leftBox = this.physics.add.sprite(width / 3.55, height / 14, 'kBox')
         this.leftBox.body.setSize(this.leftBox.width, this.leftBox.height)
         this.leftBox.body.setImmovable(true)
@@ -48,9 +38,6 @@ class Play extends Phaser.Scene {
         this.rightBox.body.setSize(this.rightBox.width, this.rightBox.height)
         this.rightBox.body.setImmovable(true)
         this.rightBox.setAlpha(0)
-
-        // opposing keeper's box hitbox group (yes, the wording is weird)
-        // this.kB = this.add.group([this.leftBox, this.rightBox])
 
         // add hitboxes to posts and corner edges of goal
         
@@ -113,44 +100,26 @@ class Play extends Phaser.Scene {
 
         this.bSchweinsteiger = this.physics.add.sprite(200, height / 2.3, 'bayern')
         this.bSchweinsteiger.body.setCircle(this.bSchweinsteiger.width / 2)
-        // this.bSchweinsteiger.setVelocityX(-500)
-        // this.bSchweinsteiger.body.setCollideWorldBounds(true)
-        // this.bSchweinsteiger.body.setBounce(1)
         this.bSchweinsteiger.body.setImmovable(true)
 
         this.jKimmich = this.physics.add.sprite(320, height / 2.7, 'bayern')
         this.jKimmich.body.setCircle(this.jKimmich.width / 2)
-        // this.jKimmich.setVelocityX(-500)
-        // this.jKimmich.body.setCollideWorldBounds(true)
-        // this.jKimmich.body.setBounce(1)
         this.jKimmich.body.setImmovable(true)
 
         this.lMatthaus = this.physics.add.sprite(420, height / 2.3, 'bayern')
         this.lMatthaus.body.setCircle(this.lMatthaus.width / 2)
-        // this.lMatthaus.setVelocityX(-500)
-        // this.lMatthaus.body.setCollideWorldBounds(true)
-        // this.lMatthaus.body.setBounce(1)
         this.lMatthaus.body.setImmovable(true)
 
         this.jMusiala = this.physics.add.sprite(35, height / 1.9, 'bayern')
         this.jMusiala.body.setCircle(this.jMusiala.width / 2)
-        // this.jMusiala.setVelocityX(-500)
-        // this.jMusiala.body.setCollideWorldBounds(true)
-        // this.jMusiala.body.setBounce(1)
         this.jMusiala.body.setImmovable(true)
 
         this.gMuller = this.physics.add.sprite(322, height / 1.5, 'bayern')
         this.gMuller.body.setCircle(this.gMuller.width / 2)
-        // this.gMuller.setVelocityX(-500)
-        // this.gMuller.body.setCollideWorldBounds(true)
-        // this.gMuller.body.setBounce(1)
         this.gMuller.body.setImmovable(true)
 
         this.kRummenigge = this.physics.add.sprite(600, height / 1.9, 'bayern')
         this.kRummenigge.body.setCircle(this.kRummenigge.width / 2)
-        // this.kRummenigge.setVelocityX(-500)
-        // this.kRummenigge.body.setCollideWorldBounds(true)
-        // this.kRummenigge.body.setBounce(1)
         this.kRummenigge.body.setImmovable(true)
 
         // Bayern Munich All-time 11 group
@@ -167,22 +136,18 @@ class Play extends Phaser.Scene {
         this.iCasillas.body.setImmovable(true)
         
         this.rCarlos = this.physics.add.sprite(50, height / 1.65, 'madrid')
-        // this.rCarlos.setX(Phaser.Math.Between(0 + this.rCarlos.width / 2, width - this.rCarlos.width / 2))
         this.rCarlos.body.setImmovable(true)
         this.rCarlos.body.checkCollision.down = false
 
         this.rMarquez = this.physics.add.sprite(200, height / 1.65, 'madrid')
-        // this.rMarquez.setX(Phaser.Math.Between(0 + this.rMarquez.width / 2, width - this.rMarquez.width / 2))
         this.rMarquez.body.setImmovable(true)
         this.rMarquez.body.checkCollision.down = false
         
         this.sRamos = this.physics.add.sprite(420, height / 1.65, 'madrid')
-        // this.sRamos.setX(Phaser.Math.Between(0 + this.sRamos.width / 2, width - this.sRamos.width / 2))
         this.sRamos.body.setImmovable(true)
         this.sRamos.body.checkCollision.down = false
 
         this.mSalgado = this.physics.add.sprite(550, height / 1.65, 'madrid')
-        // this.mSalgado.setX(Phaser.Math.Between(0 + this.mSalgado.width / 2, width - this.mSalgado.width / 2))
         this.mSalgado.body.setImmovable(true)
         this.mSalgado.body.checkCollision.down = false
 
@@ -277,19 +242,10 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.ball, this.bayernMunich)
 
         // player's team collision
-        /* this.physics.add.collider(this.ball, this.iCasillas)
-        this.physics.add.collider(this.ball, this.rCarlos)
-        this.physics.add.collider(this.ball, this.rMarquez)
-        this.physics.add.collider(this.ball, this.sRamos)
-        this.physics.add.collider(this.ball, this.mSalgado) */
         this.physics.add.collider(this.ball, this.realMadrid)
 
         // goal posts collision to add a bit of extra challenge and logic to the game by forcing the player to score from more of a frontal position
         this.physics.add.collider(this.ball, this.posts)
-
-        // keeper's box collision (for the keeper only); Issue: there is no collision or console outputs callback error; may have to give up / Update: LESSSS GOOOOO; I'M TOO BIG BRAIN
-        // this.physics.add.collider(this.oKahn, this.kB)
-        // this.physics.add.collider(this.oKahn, this.kB, this, null)
 
         // time text
         let timeConfig = {
@@ -322,7 +278,6 @@ class Play extends Phaser.Scene {
             this.finalWhistle.play();
             this.stadium.stop();
             this.ballKick.stop();
-            // this.scoredGoal.stop();
             this.winCelebration.play();
             this.scene.stop('playScene');
             this.scene.start('creditScene');

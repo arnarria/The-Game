@@ -20,12 +20,8 @@ class Load extends Phaser.Scene {
         // set load path
         this.load.path = './assets/'
 
-        // this.load.path = './assets/img/'
-        // this.load.path = './assets/sounds/'
-
         // image asset loading
         this.load.image('title', 'TitleScreen.png')
-        // this.load.image('tempTutorial', 'TempTutorial.png')
         this.load.image('tutorial', 'Tutorial.png')
         this.load.image('Bellingol', 'BellinGol.png')
         this.load.image('field', 'SoccerField.png')

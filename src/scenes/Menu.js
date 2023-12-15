@@ -3,12 +3,6 @@ class Menu extends Phaser.Scene {
         super('menuScene')
     }
 
-    /* preload() {
-
-        this.load.path = './assets/img/'
-        this.load.image('title', 'BGtest.png')
-    } */
-
     create() {
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
@@ -17,8 +11,6 @@ class Menu extends Phaser.Scene {
         
         // create title screen image
         this.add.sprite(game.config.width / 2, game.config.height / 2, 'title');
-
-        // this.scene.start('title')
 
         // add title screen music
         this.titleSong = this.sound.add('titleMusic', { volume: 0.75 })
